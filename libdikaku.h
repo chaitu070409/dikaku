@@ -78,19 +78,22 @@ uint8_t * dkku_sub_flow_get_obj2( char * subIp, char * destIp);
 //---------------------------------------------------------------------------------------
 void dkku_set_sub_flow( char * subIp, char * destIp, uint8_t allow, int bCf);	//0 Not Set, 1 Allowed, 2 Deny
 uint8_t dkku_get_sub_flow_val( char * subIp, char * destIp);
+
+void dkku_set_sub_allflows( char * subIp, uint8_t allow, int bCf); 				//0 Not Set, 1 Allowed, 2 Deny
+uint8_t dkku_get_sub_allflows_val( char * subIp, char * destIp);
 //---------------------------------------------------------------------------------------
 dkku_sub_flows_t * dkku_get_sub_flows( char * subIp);
 void dkku_free_sub_flows_results( dkku_sub_flows_t *);
 void dkku_purge_sub_flows( char * subIp);
 //---------------------------------------------------------------------------------------
 
-typedef void (*f_dkku_on_packet_recv)( u_char * pkt, int len, uint8_t * pktItem);
+typedef void (*f_dkku_on_packet_recv)( u_char * pkt, int len, uint8_t * pktItem, int direction);
 
 void dkku_default_forward_allow();
 void dkku_default_forward_deny();
 void dkku_set_onpacketrecv_handler( f_dkku_on_packet_recv pkt_handler);
 void dkku_set_packet_status( uint8_t * pkt, uint8_t allow);
-int  dkku_get_packet_info( uint8_t * pkt, char ** subIp, char ** dstIp, uint32_t * dstV4add, uint16_t * sport, uint16_t * dport, uint8_t * ipv, uint8_t * protcol);
+int  dkku_get_packet_info( uint8_t * upkt, char ** subIp, char ** dstIp, uint32_t * dstV4add, uint16_t * sport, uint16_t * dport, uint8_t * ipv, uint8_t * protcol, int * uv1, int * uv2);
 void dkku_start( char * confFileName);
 void dkku_wait();
 

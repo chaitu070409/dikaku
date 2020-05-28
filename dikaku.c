@@ -24,7 +24,7 @@
 
 #include "libdikaku.h"
 
-void dkku_on_packet( u_char * pkt, int len, uint8_t * pktItem)
+void dkku_on_packet( u_char * pkt, int len, uint8_t * pktItem, int direction)
 {
 	char * subIp = NULL;
 	char * dstIp = NULL;
@@ -33,10 +33,13 @@ void dkku_on_packet( u_char * pkt, int len, uint8_t * pktItem)
 	uint16_t dport = 0;
 	uint8_t ipv = 0;
 	uint8_t protcol = 0;
+	int uv1 = 0;
+	int uv2 = 0;
 	
-	if( dkku_get_packet_info( pktItem, &subIp, &dstIp, &dstV4add, &sport, &dport, &ipv, &protcol) == 1)
+	if( dkku_get_packet_info( pktItem, &subIp, &dstIp, &dstV4add, &sport, &dport, &ipv, &protcol, &uv1, &uv2) == 1)
 	{
-		printf( "subIp=%s dstIp=%s dstV4add=%u sport=%u dport=%u ipv=%u protcol=%u \n", subIp, dstIp, dstV4add, sport, dport, ipv, protcol);
+		printf( "subIp=%s dstIp=%s dstV4add=%u sport=%u dport=%u ipv=%u protcol=%u dir=%d uv1=%d uv2=%d \n", 
+			subIp, dstIp, dstV4add, sport, dport, ipv, protcol, direction, uv1, uv2);
 		
 		if( protcol == 17 && ( sport == 53 || dport == 53))
 		{
