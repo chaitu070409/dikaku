@@ -44,14 +44,13 @@ api functions
 | dkku_sub_flow_set_obj2 | save pointer object 2 in destination flow in subscriber session |
 | dkku_sub_flow_get_obj1 | retrieve pointer object 1 value from destination flow of subscriber session |
 | dkku_sub_flow_get_obj2 | retrieve pointer object 2 value from destination flow of subscriber session |
-
-| dkku_set_sub_flow | |
-| dkku_get_sub_flow_val | |
-| dkku_set_sub_allflows | |
-| dkku_get_sub_allflows_val | |
-| dkku_get_sub_flows | |
-| dkku_free_sub_flows_results | |
-| dkku_purge_sub_flows | |
+| dkku_set_sub_flow | allow or deny packet forarding for a given flow |
+| dkku_get_sub_flow_val | retrieve packet forarding status for a given flow |
+| dkku_set_sub_allflows | allow or deny packet forarding for a all flow |
+| dkku_get_sub_allflows_val | retrieve packet forarding status for a all flows |
+| dkku_get_sub_flows | retrieve packet forarding rules from subscriber session |
+| dkku_free_sub_flows_results | free result object of dkku_get_sub_flows |
+| dkku_purge_sub_flows | flush all rules of subscriber sessions |
 
 
 
