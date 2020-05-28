@@ -23,6 +23,9 @@ api functions
 ---
 | Name | Desctiption |
 | --- | --- |
+| dkku_default_forward_allow | allow forwarding packets |
+| dkku_default_forward_deny | deny forwarding packets |
+| dkku_set_onpacketrecv_handler | callback function when packet arrives |
 | dkku_get_config_param | gets the char * value from configuration file |
 | dkku_sub_set_intval1 | save int 1 value in subscriber session |
 | dkku_sub_set_intval2 | save int 2 value in subscriber session |
